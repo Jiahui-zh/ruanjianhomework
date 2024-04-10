@@ -1,0 +1,58 @@
+#include <stdio.h>  
+#include <stdlib.h>  
+  
+// 函数声明，求数组中的最大值  
+int MAX(int n, int* a);  
+  
+int main() {  
+    int i = 0, max = 0, n = 0, hasPositive = 0; // hasPositive 用于标识数组中是否有正数  
+  
+    // 输入数组的长度  
+    scanf("%d", &n);  
+  
+    // 如果长度为0或负数，则直接输出0并退出  
+    if (n <= 0) {  
+        printf("%d\n", max);  
+        system("pause");  
+        return 0;  
+    }  
+  
+    // 定义数组，假设最大长度为100  
+    int a[100];  
+  
+    // 输入数组元素，并检查是否有正数  
+    for (i = 0; i < n; i++) {  
+        scanf("%d", &a[i]);  
+        if (a[i] > 0) {  
+            hasPositive = 1; // 发现正数，将标识设为1  
+        }  
+    }  
+  
+    // 根据是否有正数，决定调用MAX函数还是直接赋值为0  
+    if (hasPositive) {  
+        max = MAX(n, a);  
+    } else {  
+        max = 0;  
+    }  
+  
+    // 输出最大值  
+    printf("%d\n", max);  
+  
+  
+    return 0;  
+}  
+  
+// 函数定义，求数组中的最大值  
+int MAX(int n, int* a) {  
+    int m, maxSoFar = 0, currentSum = 0;  
+    for (m = 0; m < n; m++) {  
+        currentSum += a[m]; // 累加数组元素  
+        if (currentSum < a[m]) {  
+            currentSum = a[m]; // 如果累加和小于当前元素，则重置累加和  
+        }  
+        if (maxSoFar < currentSum) {  
+            maxSoFar = currentSum; // 更新最大累加和  
+        }  
+    }  
+    return maxSoFar;  
+}
