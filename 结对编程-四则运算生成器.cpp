@@ -311,8 +311,10 @@ int main()
     cout << "请输入题目数(1~100)：";
     int times, down, up, flag1, flag2, flag3, flag4, flag5 = 1;
     cin >> times;
-    cout << "请输入数值范围:";
-    cin >> down >> up;
+    cout << "请输入数值范围\n起始数字：";
+    cin >> down;
+    cout << "结束数字：";
+    cin>> up;
     cout << "是否加入乘除法（y/n）:";
     char judement1;
     cin >> judement1;
